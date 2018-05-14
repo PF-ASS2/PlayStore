@@ -7,7 +7,7 @@ public abstract class Content {
 
 	protected List<Comment> Review = new ArrayList<Comment>();
 
-	// private String usrReview; // maybe not used
+	Comment rep = new Comment();
 
 	private String ID;
 	private String Application_Name;
@@ -42,12 +42,6 @@ public abstract class Content {
 		this.No_of_Downloads += 1;
 	}
 
-	// public abstract void addReviews ();
-
 	public abstract void addReviews(Comment a);
-
-	{
-
-	}
 
 }

@@ -10,7 +10,6 @@ public class Game extends Content {
 		super(iD, application_Name, price);
 		this.isMultiPlayer = isMultiPlayer;
 		this.o = o;
-
 	}
 
 	public Game(String iD, String application_Name, boolean isMultiPlayer, OS o) {
@@ -25,9 +24,9 @@ public class Game extends Content {
 
 	public void printAllReview() {
 		for (Comment a : this.Review) {
-
 			System.out.println(a);
-
+			a.display("\t");
+			System.out.println();
 		}
 	}
 
@@ -35,5 +34,4 @@ public class Game extends Content {
 
 		this.Review.add(a);
 	}
-
 }

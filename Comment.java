@@ -9,20 +9,19 @@ public class Comment {
 
 	protected User user;
 	protected String usrComment;
-	// Content content = new Content();
 
 	public Comment() {
+
 	}
 
 	public Comment(User usrDetails, String usrComs) {
 
 		this.user = usrDetails;
 		this.usrComment = usrComs;
-
 	}
 
 	public void addReply(Comment r) {
-		// Comment1 c = new Comment1();
+
 		this.reply.add(r);
 	}
 
@@ -31,11 +30,12 @@ public class Comment {
 		return this.user.getUsr() + '"' + this.usrComment + '"';
 	}
 
-	public void printAllReview() {
-		for (Comment a : this.reply) {
-
-			System.out.println(a);
+	public void display(String t) {
+		String tab = t;
+		for (Comment r : reply) {
+			System.out.println(tab + r);
+			tab += "\t";
+			r.display(tab);
 		}
 	}
-
 }
