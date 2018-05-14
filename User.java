@@ -1,4 +1,4 @@
-package PlayStore;
+package playstore;
 
 import java.util.ArrayList;
 
@@ -27,6 +27,11 @@ public class User {
 		Name = name;
 		Phone_Number = phone_Number;
 		this.o = o;
+	};
+	
+	public String getUsr () {
+		String usrDetails = "User ID: " + this.Id + ";  Name: " + this.Name + ";  ";
+		return usrDetails;
 	};
 
 	public void becomePremium() {
