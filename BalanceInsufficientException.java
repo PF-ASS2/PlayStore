@@ -1,4 +1,4 @@
-package PlayStore;
+package playstore;
 
 public class BalanceInsufficientException extends Exception {
 
