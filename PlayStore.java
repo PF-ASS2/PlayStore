@@ -1,13 +1,54 @@
 package playstore;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Enumeration;
+
 //COSC2531 Programming Fundamentals,Sem 2,2018*!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!This is a sample main method that checks the funtionalities required in the assignment 2. This file will NOT compile unless you write all the required java classes,along with their attributes and the methods.
 
 public class PlayStore {
 	// Student to do: Add the necessary attributes and methods
+	Hashtable<String, Content> storeContent = new Hashtable<String, Content>();
+	List<User> usrDetails = new ArrayList<User>();
+
+	User usr;
+	Content content;
+	Game game;
+
+	// Enumeration Content;
+	// String keyValue;
+
+	public void addContents(Content a) {
+
+		if (a instanceof Game) {
+			String id;
+			// grab details
+			id = game.getId();
+			// add content to store
+			this.storeContent.put(id, a);
+			String gName = game.getApplication_Name();
+			// print out game added
+			System.out.println("Game" + gName + "added to the PlayStore.");
+		} else if (a instanceof Book) {
+			// id = book.ge
+			// grab details
+			// print out book added
+		} else if (a instanceof Magazine) {
+			// grab details
+			// print out magazine added
+		}
+	}
+
+	public void addUsers(User r) {
+
+		this.usrDetails.add(r);
+	}
 
 	public static void main(String[] args) {
 		PlayStore admin = new PlayStore();
 		// adding new readings
+
 		String[] authors = { "L. Tolstoy" };
 		Book b1 = new Book("R1", "War and Peace", 12, "The Russian Messenger‎", "Novel", 1225, authors);
 		String[] authors2 = { "F. Scott Fitzgerald" };
@@ -19,7 +60,7 @@ public class PlayStore {
 		admin.addContents(b1);
 		admin.addContents(b2);
 		admin.addContents(b3);
-	admin.addContents(m1);
+		admin.addContents(m1);
 
 		// adding new games
 		OS os1 = new OS("Android", 4);
@@ -38,22 +79,25 @@ public class PlayStore {
 		User u2 = new User("u2", "Bradly Josesp", "0412001", 120, os1);
 		User u3 = new User("u3", "James Wilkie", "0412002", 100, os2);
 		User u4 = new User("u4", "Will Scobie", "0412003", 50, os3);
+
 		admin.addUsers(u1);
 		admin.addUsers(u2);
 		admin.addUsers(u3);
 		admin.addUsers(u4);
 
 		// Users are buying contents
+
 		u1.buyContent(b1);
 		u1.buyContent(b3);
 		u4.buyContent(g1);
 		u1.buyContent(m1);
 
 		// some users becoming premium and then buying contents
+
 		u4.becomePremium();
 		u4.buyContent(m1);
 		u2.becomePremium();
-	u2.buyContent(g2);
+		u2.buyContent(g2);
 		u2.buyContent(g1);
 
 		// showing contents bought by the user u2
@@ -65,13 +109,13 @@ public class PlayStore {
 		// showing all reading type of objects with the genre “Novel�?
 		admin.showReadingOfGenre("Novel");
 
-		// Student to do: call a method to show all games. What should be the parameters
-		// of that //method? See Section 2, functionality 7
-		
+		// Student to do: call a method to show all games. What should be the
+		// parameters // of that //method? See Section 2, functionality 7
 
 		Comment cm = new Comment(u1, "Pokemon is timeless, who doesn't like Pokemon!");
 		g1.addReviews(cm);
-		Comment cmr1 = new Comment(u2, "Really? You run around in imaginary fields hunting for imaginary animals...lame.");
+		Comment cmr1 = new Comment(u2,
+				"Really? You run around in imaginary fields hunting for imaginary animals...lame.");
 		cm.addReply(cmr1);
 		Comment cmr2 = new Comment(u1, "Nah, a game doesn't stick around for 20 years if it's crap");
 		cmr1.addReply(cmr2);
@@ -84,11 +128,10 @@ public class PlayStore {
 		Comment cm2r2 = new Comment(u3, "Really?? It's unplayable for me.");
 		cm2r1.addReply(cm2r2);
 		Comment cm2r3 = new Comment(u1, "Time to upgrade your iPhone...lols.");
-		cm2r2.addReply(cm2r3);	
+		cm2r2.addReply(cm2r3);
 
 		// showing all reviews including the replies on object g1
 		g1.printAllReview();
 
-		
 	}
 }
