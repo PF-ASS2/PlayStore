@@ -2,6 +2,8 @@ package playstore;
 
 import java.util.ArrayList;
 
+//make return objects immutable --- look into this
+
 public class User {
 
 	private String Id;
@@ -11,6 +13,7 @@ public class User {
 	private OS o;
 	private boolean Ispremium = false;
 	private ArrayList<Content> ContentBought = new ArrayList<Content>();
+	// private User [] usrDetails = new User [3];
 
 	public User(String id, String name, String phone_Number, int balance, OS o) {
 		super();
