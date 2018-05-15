@@ -7,8 +7,6 @@ public abstract class Content {
 
 	protected List<Comment> Review = new ArrayList<Comment>();
 
-	Comment rep = new Comment();
-
 	private String ID;
 	private String Application_Name;
 
@@ -38,10 +36,26 @@ public abstract class Content {
 		return Price;
 	}
 
+	public String getId() {
+		return this.ID;
+	}
+
 	public void Increase_NoD_by1() {
 		this.No_of_Downloads += 1;
 	}
 
-	public abstract void addReviews(Comment a);
+	public void printAllReview() {
+
+		for (Comment a : this.Review) {
+			System.out.println(a);
+			a.display("\t");
+			System.out.println();
+		}
+	}
+
+	public void addReviews(Comment a) {
+
+		this.Review.add(a);
+	}
 
 }
