@@ -22,16 +22,4 @@ public class Game extends Content {
 		return o;
 	}
 
-	public void printAllReview() {
-		for (Comment a : this.Review) {
-			System.out.println(a);
-			a.display("\t");
-			System.out.println();
-		}
-	}
-
-	public void addReviews(Comment a) {
-
-		this.Review.add(a);
-	}
 }
