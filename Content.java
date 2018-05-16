@@ -7,6 +7,14 @@ public abstract class Content {
 
 	protected List<Comment> Review = new ArrayList<Comment>();
 
+	// private double Price = 0;
+	// private String Publisher;
+	// private String Genre;
+	// private int No_of_Pages;
+
+	private Reading reading;
+	private Book book;
+
 	private String ID;
 	private String Application_Name;
 
@@ -29,7 +37,7 @@ public abstract class Content {
 	}
 
 	public String getApplication_Name() {
-		return Application_Name;
+		return Application_Name.toString();
 	}
 
 	public double getPrice() {
@@ -37,7 +45,7 @@ public abstract class Content {
 	}
 
 	public String getId() {
-		return this.ID;
+		return this.ID.toString();
 	}
 
 	public void Increase_NoD_by1() {
@@ -46,6 +54,7 @@ public abstract class Content {
 
 	public void printAllReview() {
 		System.out.println();
+		System.out.println("Reviews for the game " + this.Application_Name);
 		for (Comment a : this.Review) {
 			System.out.println(a);
 			a.display("\t");
@@ -53,14 +62,16 @@ public abstract class Content {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return this.getId();
-	}
-
 	public void addReviews(Comment a) {
 
 		this.Review.add(a);
 	}
 
+	public String getGenre() {
+		return reading.getGenre();
+	}
+
+	public String[] getAuthorName() {
+		return reading.getAuthorName();
+	}
 }

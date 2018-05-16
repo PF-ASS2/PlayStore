@@ -37,6 +37,10 @@ public class User {
 		return usrDetails;
 	}
 
+	public String getUsrName() {
+		return Name.toString();
+	}
+
 	public void becomePremium() {
 		try {
 			int balance = this.Balance - 100;
@@ -100,14 +104,11 @@ public class User {
 	}
 
 	public void AllContentsBought() {
-
+		System.out.println(this.Name + " has purchased:");
 		for (Content c : ContentBought) {
 			System.out.println(c.getApplication_Name());
 		}
+		System.out.println();
 	}
 
-	@Override
-	public String toString() {
-		return this.Name;
-	}
 }

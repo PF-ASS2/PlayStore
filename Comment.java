@@ -7,8 +7,9 @@ public class Comment {
 
 	protected List<Comment> reply = new ArrayList<Comment>();
 
-	protected User user;
-	protected String usrComment;
+	private User user;
+	// private Content content;
+	private String usrComment;
 
 	public Comment() {
 
@@ -23,6 +24,7 @@ public class Comment {
 	public void addReply(Comment r) {
 
 		this.reply.add(r);
+
 	}
 
 	@Override

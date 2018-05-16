@@ -1,9 +1,9 @@
 package playstore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Enumeration;
 
 //COSC2531 Programming Fundamentals,Sem 2,2018*!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!This is a sample main method that checks the funtionalities required in the assignment 2. This file will NOT compile unless you write all the required java classes,along with their attributes and the methods.
 
@@ -13,56 +13,77 @@ public class PlayStore {
 	// public List<Content> storeContent = new ArrayList<Content>();
 	public List<User> usrDetails = new ArrayList<User>();
 
-	private User usr;
-	private Content content;
-	// private Game game;
-	// private Book book;
-
-	// Enumeration Content;
-	// String keyValue;
-
 	public void addContents(Content a) {
-		// grab key details
-		Content b = a;
-		String c = b.toString();
+		// grab key and content name details
+		String iD = a.getId();
+		String cName = a.getApplication_Name();
 
 		if (a instanceof Game) {
 
-			this.storeContent.put(c, a);
-			// System.out.println(storeContent.get());
-			System.out.println("Game: " + b + " added to the PlayStore.\n");
+			this.storeContent.put(iD, a);
+
+			System.out.println("Game: " + cName + " added to the PlayStore.");
 		} else if (a instanceof Book) {
 
-			this.storeContent.put(c, a);
-			// String bName = book.getApplication_Name();
-			// print out book added
-			System.out.println("Book: " + b + " added to the PlayStore.\n");
+			this.storeContent.put(iD, a);
+
+			System.out.println("Book: " + cName + " added to the PlayStore.");
 		} else if (a instanceof Magazine) {
-			// grab details
 
-			// add content to store
-			this.storeContent.put(c, a);
+			this.storeContent.put(iD, a);
 
 			// print out book added
-			System.out.println("Magazine " + b + " added to the PlayStore.\n");
+			System.out.println("Magazine: " + cName + " added to the PlayStore.");
 		}
+
 	}
 
 	public void addUsers(User r) {
-
+		String uName = r.getUsrName();
 		this.usrDetails.add(r);
 
-		String s = r.toString();
-
-		System.out.println(s + " has joined the PlayStore\n");
+		System.out.println(uName + " has joined the PlayStore\n");
 	}
 
 	public void showReadingOfGenre(String n) {
-
-	};
+		System.out.println();
+		for (Content c : storeContent.values()) {
+			String name = c.getApplication_Name();
+			if (c instanceof Book) {
+				String novel = c.getGenre();
+				if (novel == n) {
+					String[] a = c.getAuthorName();
+					System.out.println(
+							"The book " + '"' + name + '"' + " is a " + n + " authored by " + Arrays.toString(a));
+				}
+			}
+			if (c instanceof Magazine) {
+				String mag = c.getGenre();
+				if (mag == n) {
+					System.out.println("The magazine " + '"' + name + '"' + " is a " + n + " magazine.");
+				}
+			}
+		}
+		System.out.println();
+	}
 
 	public void showAllContents() {
+		System.out.println("The contents of the PlayStore Are:");
+		for (Content c : storeContent.values()) {
+			String cName = c.getApplication_Name();
 
+			if (c instanceof Game) {
+
+				System.out.print("Game: " + cName + ", ");
+			} else if (c instanceof Book) {
+
+				System.out.println("Book: " + cName + ", ");
+			} else if (c instanceof Magazine) {
+
+				// print out book added
+				System.out.println("Magazine: " + cName + ", ");
+			}
+		}
 	}
 
 	public static void main(String[] args) {
@@ -127,7 +148,7 @@ public class PlayStore {
 		admin.showAllContents();
 
 		// showing all reading type of objects with the genre “Novel�?
-		admin.showReadingOfGenre("Novel");
+		admin.showReadingOfGenre("Business");
 
 		// Student to do: call a method to show all games. What should be the
 		// parameters // of that //method? See Section 2, functionality 7
