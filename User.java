@@ -41,11 +41,11 @@ public class User {
 		try {
 			int balance = this.Balance - 100;
 			if (balance < 0) {
-				throw new BalanceInsufficientException("You don't have enough balance");
+				throw new BalanceInsufficientException(this.Name + " You don't have enough balance");
 			} else {
 				this.Ispremium = true;
 				this.Balance = balance;
-				System.out.println("You are Premium now");
+				System.out.println(this.Name + " You are Premium now");
 			}
 		} catch (BalanceInsufficientException e) {
 			System.out.println(e.getMessage());
@@ -68,22 +68,21 @@ public class User {
 			if (c instanceof Game) {
 
 				if (!this.o.getType().equals(((Game) c).getO().getType())) {
-					throw new OsIncompatibleException("Your OS is not compatible with game required OS");
+					throw new OsIncompatibleException("Your OS is not compatible with the game required OS\n");
 				} else if (this.o.getVersion() < ((Game) c).getO().getVersion())
 
 				{
 					throw new OsVersionIncompatibleException(
-							"Your OS Version is not compatible with game required OS Version");
+							"Your OS Version is not compatible with game required OS Version\n");
 				}
-
 			}
 			if (this.Balance - realprice < 0) {
-				throw new BalanceInsufficientException("You don't have enough balance");
+				throw new BalanceInsufficientException("You don't have enough balance\n");
 			} else {
 
 				this.Balance -= realprice;
 				ContentBought.add(c);
-				System.out.println("Success! " + c.getApplication_Name());
+				System.out.println("Success! " + this.Name + " just bought " + c.getApplication_Name() + "\n");
 			}
 
 		} catch (BalanceInsufficientException f) {
@@ -105,5 +104,10 @@ public class User {
 		for (Content c : ContentBought) {
 			System.out.println(c.getApplication_Name());
 		}
+	}
+
+	@Override
+	public String toString() {
+		return this.Name;
 	}
 }

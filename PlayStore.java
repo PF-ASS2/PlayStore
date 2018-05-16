@@ -9,40 +9,60 @@ import java.util.Enumeration;
 
 public class PlayStore {
 	// Student to do: Add the necessary attributes and methods
-	Hashtable<String, Content> storeContent = new Hashtable<String, Content>();
-	List<User> usrDetails = new ArrayList<User>();
+	public Hashtable<String, Content> storeContent = new Hashtable<String, Content>();
+	// public List<Content> storeContent = new ArrayList<Content>();
+	public List<User> usrDetails = new ArrayList<User>();
 
-	User usr;
-	Content content;
-	Game game;
+	private User usr;
+	private Content content;
+	// private Game game;
+	// private Book book;
 
 	// Enumeration Content;
 	// String keyValue;
 
 	public void addContents(Content a) {
+		// grab key details
+		Content b = a;
+		String c = b.toString();
 
 		if (a instanceof Game) {
-			String id;
-			// grab details
-			id = game.getId();
-			// add content to store
-			this.storeContent.put(id, a);
-			String gName = game.getApplication_Name();
-			// print out game added
-			System.out.println("Game" + gName + "added to the PlayStore.");
+
+			this.storeContent.put(c, a);
+			// System.out.println(storeContent.get());
+			System.out.println("Game: " + b + " added to the PlayStore.\n");
 		} else if (a instanceof Book) {
-			// id = book.ge
-			// grab details
+
+			this.storeContent.put(c, a);
+			// String bName = book.getApplication_Name();
 			// print out book added
+			System.out.println("Book: " + b + " added to the PlayStore.\n");
 		} else if (a instanceof Magazine) {
 			// grab details
-			// print out magazine added
+
+			// add content to store
+			this.storeContent.put(c, a);
+
+			// print out book added
+			System.out.println("Magazine " + b + " added to the PlayStore.\n");
 		}
 	}
 
 	public void addUsers(User r) {
 
 		this.usrDetails.add(r);
+
+		String s = r.toString();
+
+		System.out.println(s + " has joined the PlayStore\n");
+	}
+
+	public void showReadingOfGenre(String n) {
+
+	};
+
+	public void showAllContents() {
+
 	}
 
 	public static void main(String[] args) {
@@ -75,10 +95,10 @@ public class PlayStore {
 		admin.addContents(g3);
 
 		// adding new users
-		User u1 = new User("u1", "Jeremy David", "0412000", 120, os1);
-		User u2 = new User("u2", "Bradly Josesp", "0412001", 120, os1);
-		User u3 = new User("u3", "James Wilkie", "0412002", 100, os2);
-		User u4 = new User("u4", "Will Scobie", "0412003", 50, os3);
+		User u1 = new User("u1", "Splnty", "0412000", 120, os1);
+		User u2 = new User("u2", "JumpingJack", "0412001", 120, os1);
+		User u3 = new User("u3", "MrBee", "0412002", 100, os2);
+		User u4 = new User("u4", "TakTakBoom", "0412003", 50, os3);
 
 		admin.addUsers(u1);
 		admin.addUsers(u2);
@@ -97,11 +117,11 @@ public class PlayStore {
 		u4.becomePremium();
 		u4.buyContent(m1);
 		u2.becomePremium();
-		u2.buyContent(g2);
+		u2.buyContent(g3);
 		u2.buyContent(g1);
 
 		// showing contents bought by the user u2
-		u2.showContentsBought();
+		u2.AllContentsBought();
 
 		// showing all contents in the PlayStore
 		admin.showAllContents();

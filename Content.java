@@ -45,12 +45,17 @@ public abstract class Content {
 	}
 
 	public void printAllReview() {
-
+		System.out.println();
 		for (Comment a : this.Review) {
 			System.out.println(a);
 			a.display("\t");
 			System.out.println();
 		}
+	}
+
+	@Override
+	public String toString() {
+		return this.getId();
 	}
 
 	public void addReviews(Comment a) {
