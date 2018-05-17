@@ -7,6 +7,9 @@ public abstract class Reading extends Content {
 	private String Genre;
 	private int No_of_Pages;
 
+	public Reading() {
+	}
+
 	public Reading(String iD, String application_Name, double price, String Publisher, String Genre, int No_of_Pages) {
 		super(iD, application_Name, price);
 		this.Publisher = Publisher;

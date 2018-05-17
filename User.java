@@ -33,7 +33,7 @@ public class User {
 	};
 
 	public String getUsr() {
-		String usrDetails = "User ID: " + this.Id + ";  Name: " + this.Name + ";  ";
+		String usrDetails = "User " + "(" + this.Id + "), " + this.Name + ";  ";
 		return usrDetails;
 	}
 
@@ -72,7 +72,8 @@ public class User {
 			if (c instanceof Game) {
 
 				if (!this.o.getType().equals(((Game) c).getO().getType())) {
-					throw new OsIncompatibleException("Your OS is not compatible with the game required OS\n");
+					throw new OsIncompatibleException(
+							this.Name + " your OS is not compatible with the game required OS\n");
 				} else if (this.o.getVersion() < ((Game) c).getO().getVersion())
 
 				{
@@ -104,7 +105,7 @@ public class User {
 	}
 
 	public void AllContentsBought() {
-		System.out.println(this.Name + " has purchased:");
+		System.out.println(this.Name + " total purchase history.");
 		for (Content c : ContentBought) {
 			System.out.println(c.getApplication_Name());
 		}

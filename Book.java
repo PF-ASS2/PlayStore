@@ -12,6 +12,9 @@ public class Book extends Reading {
 
 	}
 
+	public Book() {
+	}
+
 	public Book(String iD, String application_Name, String Publisher, String Genre, int No_of_Pages,
 			String[] Author_Name) {
 		super(iD, application_Name, Publisher, Genre, No_of_Pages);

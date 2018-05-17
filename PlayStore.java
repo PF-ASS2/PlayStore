@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map.Entry;
 
 //COSC2531 Programming Fundamentals,Sem 2,2018*!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!!!!!This is a sample main method that checks the funtionalities required in the assignment 2. This file will NOT compile unless you write all the required java classes,along with their attributes and the methods.
 
@@ -12,6 +13,12 @@ public class PlayStore {
 	public Hashtable<String, Content> storeContent = new Hashtable<String, Content>();
 	// public List<Content> storeContent = new ArrayList<Content>();
 	public List<User> usrDetails = new ArrayList<User>();
+
+	private String game[] = { "G" };
+	private String book[] = { "RB" };
+	private String mag[] = { "RM" };
+	private String all[] = { "", "G", "RB", "RM" };
+	private String cName;
 
 	public void addContents(Content a) {
 		// grab key and content name details
@@ -35,14 +42,14 @@ public class PlayStore {
 			// print out book added
 			System.out.println("Magazine: " + cName + " added to the PlayStore.");
 		}
-
 	}
 
 	public void addUsers(User r) {
+
 		String uName = r.getUsrName();
 		this.usrDetails.add(r);
 
-		System.out.println(uName + " has joined the PlayStore\n");
+		System.out.println(uName + " has joined the PlayStore");
 	}
 
 	public void showReadingOfGenre(String n) {
@@ -67,36 +74,47 @@ public class PlayStore {
 		System.out.println();
 	}
 
-	public void showAllContents() {
-		System.out.println("The contents of the PlayStore Are:");
-		for (Content c : storeContent.values()) {
-			String cName = c.getApplication_Name();
+	public void showAllContents(String[] media) {
 
-			if (c instanceof Game) {
-
-				System.out.print("Game: " + cName + ", ");
-			} else if (c instanceof Book) {
-
-				System.out.println("Book: " + cName + ", ");
-			} else if (c instanceof Magazine) {
-
-				// print out book added
-				System.out.println("Magazine: " + cName + ", ");
+		if (media[0] == "G") {
+			System.out.println("Games in the PlayStore:");
+		} else if (media[0] == "RB") {
+			System.out.println("Books in the PlayStore:");
+		} else if (media[0] == "RM") {
+			System.out.println("Magazines in the PlayStore:");
+		} else {
+			System.out.println("Everything in the PlayStore:");
+		}
+		for (Entry<String, Content> c : storeContent.entrySet()) {
+			if (c.getKey().startsWith(media[0])) {
+				this.cName = c.getValue().getApplication_Name();
+				// System.out.println(cName);
+				if (c.getValue() instanceof Game) {
+					System.out.println("Game: " + cName + ", ");
+				} else if (c.getValue() instanceof Book) {
+					System.out.println("Book: " + cName + ", ");
+				} else if (c.getValue() instanceof Magazine) {
+					// print out book added
+					System.out.println("Magazine: " + cName + ", ");
+				}
 			}
 		}
 	}
 
 	public static void main(String[] args) {
 		PlayStore admin = new PlayStore();
+		// Game game = new Game();
+		// Reading reading = new Book();
+		// Magazine magazine = new Magazine();
 		// adding new readings
 
 		String[] authors = { "L. Tolstoy" };
-		Book b1 = new Book("R1", "War and Peace", 12, "The Russian Messenger‎", "Novel", 1225, authors);
+		Book b1 = new Book("RB1", "War and Peace", 12, "The Russian Messenger‎", "Novel", 1225, authors);
 		String[] authors2 = { "F. Scott Fitzgerald" };
-		Book b2 = new Book("R2", "The great gatsby", 10, "Charles Scribner's Sons", "Novel", 180, authors2);
+		Book b2 = new Book("RB2", "The great gatsby", 10, "Charles Scribner's Sons", "Novel", 180, authors2);
 		String[] authors3 = { "Thomas H. Cormen", "Charles E. Leiserson", "Ronald L. Rivest", "Clifford Stein" };
-		Book b3 = new Book("R3", "Introduction to algorithms", 100, "MIT Press", "Computer Science", 1312, authors3);
-		Magazine m1 = new Magazine("R4", "Forbes", 8, "Forbes Media‎", "Business", 50, "World’s richest under 30");
+		Book b3 = new Book("RB3", "Introduction to algorithms", 100, "MIT Press", "Computer Science", 1312, authors3);
+		Magazine m1 = new Magazine("RM4", "Forbes", 8, "Forbes Media‎", "Business", 50, "World’s richest under 30");
 
 		admin.addContents(b1);
 		admin.addContents(b2);
@@ -107,9 +125,9 @@ public class PlayStore {
 		OS os1 = new OS("Android", 4);
 		OS os2 = new OS("iOS", 10);
 		OS os3 = new OS("Android", 3);
-		Game g1 = new Game("g1", "Pokemon", 5, false, os1);
-		Game g2 = new Game("g2", "Pokemon", 5, false, os2);
-		Game g3 = new Game("g3", "MineCraft", 2, true, os1);
+		Game g1 = new Game("G1", "Pokemon", 5, false, os1);
+		Game g2 = new Game("G2", "Pokemon", 5, false, os2);
+		Game g3 = new Game("G3", "MineCraft", 2, true, os1);
 
 		admin.addContents(g1);
 		admin.addContents(g2);
@@ -145,7 +163,10 @@ public class PlayStore {
 		u2.AllContentsBought();
 
 		// showing all contents in the PlayStore
-		admin.showAllContents();
+		// admin.showAllContents(admin.book);
+		// admin.showAllContents(admin.game);
+		// admin.showAllContents(admin.mag);
+		admin.showAllContents(admin.all);
 
 		// showing all reading type of objects with the genre “Novel�?
 		admin.showReadingOfGenre("Business");

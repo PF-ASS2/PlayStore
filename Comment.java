@@ -7,8 +7,7 @@ public class Comment {
 
 	protected List<Comment> reply = new ArrayList<Comment>();
 
-	private User user;
-	// private Content content;
+	private String user;
 	private String usrComment;
 
 	public Comment() {
@@ -17,8 +16,16 @@ public class Comment {
 
 	public Comment(User usrDetails, String usrComs) {
 
-		this.user = usrDetails;
+		this.user = usrDetails.getUsr();
 		this.usrComment = usrComs;
+	}
+
+	public String getUsr() {
+		return this.user;
+	}
+
+	public String getUsrComment() {
+		return this.usrComment;
 	}
 
 	public void addReply(Comment r) {
@@ -27,15 +34,10 @@ public class Comment {
 
 	}
 
-	@Override
-	public String toString() {
-		return this.user.getUsr() + '"' + this.usrComment + '"';
-	}
-
 	public void display(String t) {
 		String tab = t;
 		for (Comment r : reply) {
-			System.out.println(tab + r);
+			System.out.println(tab + r.user + r.usrComment);
 			tab += "\t";
 			r.display(tab);
 		}

@@ -18,6 +18,9 @@ public class Game extends Content {
 		this.o = o;
 	}
 
+	public Game() {
+	}
+
 	public OS getO() {
 		return o;
 	}

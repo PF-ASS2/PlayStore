@@ -7,11 +7,6 @@ public abstract class Content {
 
 	protected List<Comment> Review = new ArrayList<Comment>();
 
-	// private double Price = 0;
-	// private String Publisher;
-	// private String Genre;
-	// private int No_of_Pages;
-
 	private Reading reading;
 	private Book book;
 
@@ -20,6 +15,9 @@ public abstract class Content {
 
 	private int No_of_Downloads = 0;
 	private double Price = 0;
+
+	public Content() {
+	}
 
 	// constructor to take ID, name and price of app
 	public Content(String iD, String application_Name, double price) {
@@ -53,10 +51,9 @@ public abstract class Content {
 	}
 
 	public void printAllReview() {
-		System.out.println();
 		System.out.println("Reviews for the game " + this.Application_Name);
 		for (Comment a : this.Review) {
-			System.out.println(a);
+			System.out.println(a.getUsr() + a.getUsrComment());
 			a.display("\t");
 			System.out.println();
 		}
